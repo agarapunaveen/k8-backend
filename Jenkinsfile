@@ -1,4 +1,4 @@
-@Library('my-shared-library') _
+@Library('jenkins-shared-library') _
 
 def configMap = [
 
