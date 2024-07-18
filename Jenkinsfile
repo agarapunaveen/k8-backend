@@ -57,6 +57,14 @@ pipeline {
             }
         }
 
+         stage ('Deploy'){
+            steps{
+                sh """
+                 
+                """
+            }
+        }
+
         // stage('sonar scanar'){
         //     environment {
         //         scannerHome = tool 'sonar'
