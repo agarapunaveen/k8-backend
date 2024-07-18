@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'node'
+        label 'agent-1'
     }
     options {
         // Timeout counter starts AFTER agent is allocated
@@ -27,7 +27,8 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 sh """
-                 docker build -t backend: ${appVersion} .
+                 npm install
+                 ls -ltr
                 """
             }
         }
@@ -36,6 +37,14 @@ pipeline {
                sh """
                     zip -q -r backend-${appVersion}.zip * -x Jenkinsfile -x backend-${appVersion}.zip
                     ls -ltr
+                """
+            }
+        }
+
+        stage ('Docker Build'){
+            steps{
+                sh """
+                  docker build:${appVersion} .
                 """
             }
         }
