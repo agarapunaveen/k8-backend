@@ -6,3 +6,5 @@ def configMap=[
     component:"backend"
     project:"expense"
 ]
+
+pipelineDecission.decidePipeline(configMap)
