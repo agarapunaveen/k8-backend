@@ -1,10 +1,10 @@
 @Library('my-shared-library') _
 
-def configMap=[
+def configMap = [
 
-    type:"nodejsEKS"
-    component:"backend"
-    project:"expense"
+    type: "nodejsEKS",
+    component: "backend",
+    project: "expense"
 ]
 
 pipelineDecission.decidePipeline(configMap)
