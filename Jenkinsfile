@@ -7,4 +7,4 @@ def configMap = [
     project: "expense"
 ]
 
-pipelineDecission.decidePipeline(configMap)
+pipelineDecission.decidepipeline(configMap)
