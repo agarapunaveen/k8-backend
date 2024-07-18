@@ -44,7 +44,7 @@ pipeline {
         stage ('Docker Build'){
             steps{
                 sh """
-                  docker build:${appVersion} .
+                  docker build -t backend:${appVersion} .
                 """
             }
         }
