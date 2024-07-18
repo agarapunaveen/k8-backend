@@ -11,7 +11,9 @@ pipeline {
    
     environment{
        def appVersion = ''
-    //    def nexusUrl= 'nexus.naveencloud.online:8081'
+       def nexusUrl= 'nexus.naveencloud.online:8081'
+       def region='us-east-1'
+       def account_id='211125718262'
     }
     stages {
         stage('read the version'){
@@ -44,7 +46,13 @@ pipeline {
         stage ('Docker Build'){
             steps{
                 sh """
-                  docker build -t backend:${appVersion} .
+                  aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${account_id}.dkr.ecr.${region}.amazonaws.com
+
+                  docker build -t expense-backend .
+
+                  docker tag expense-backend:latest ${account_id}.dkr.ecr.us-east-1.amazonaws.com/expense-backend:${appVersion}
+
+                  docker push ${account_id}.dkr.ecr.us-east-1.amazonaws.com/expense-backend:${appVersion}
                 """
             }
         }
